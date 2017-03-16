@@ -16,7 +16,7 @@
   </target>
 
   <target name="test" depends="compile">
-    <junit haltonfailure="yes" fork="true">
+    <junit fork="true">
         <classpath>
           <path refid="classpath.test"/>
         </classpath>
