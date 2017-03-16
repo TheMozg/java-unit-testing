@@ -28,7 +28,11 @@ public class EulerNum {
     }
 
     private static List<BigDecimal> eulerNums = new ArrayList<>();
-
+    
+    public static void clearCache(){
+      eulerNums.clear();
+    }
+    
     public static BigDecimal calculate(int n) {
         if (eulerNums.size() == 0) {
             eulerNums.add(BigDecimal.valueOf(1L));
