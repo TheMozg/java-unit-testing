@@ -1,4 +1,3 @@
-package itmo.testing;
 
 import org.junit.Assert;
 import org.junit.Before;

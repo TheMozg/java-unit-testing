@@ -1,4 +1,3 @@
-package itmo.testing;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

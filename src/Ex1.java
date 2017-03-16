@@ -1,4 +1,3 @@
-package itmo.testing;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -49,7 +48,7 @@ public class Ex1 {
     }
 
 
-    private BigDecimal getEuler(int n) {
+    public BigDecimal getEuler(int n) {
         if (n == 0)
             return BigDecimal.valueOf(1L);
         if (n % 2 != 0)

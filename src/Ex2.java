@@ -1,4 +1,3 @@
-package itmo.testing;
 
 import java.util.Arrays;
 
