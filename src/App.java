@@ -1,22 +1,26 @@
-import java.util.Date;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
+    static List<BigDecimal> eulerNums = new ArrayList<>();
+
+    public static BigDecimal calculate(int n) {
+        for (int i = (eulerNums.size() - 1); i <= n; i++) {
+            eulerNums.add(EulerNum.calculateEuler(i));
+        }
+        return eulerNums.get(n);
+    }
+
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
-        Ex1 govno = new Ex1();
-        long startTime = System.nanoTime();
-        for (int i=100;i<=100;i++) {
-          BigDecimal bg = govno.getEuler(i);
-          System.out.println( bg);
+
+        BigDecimal euler = EulerNum.calculate(300);
+        System.out.println(euler.setScale(2).toPlainString());
+        for (int i = 0; i <= 100; i++) {
+            euler = EulerNum.calculate(i);
+            System.out.println(euler.setScale(2).toPlainString());
         }
-        long endTime = System.nanoTime();
-        System.out.println( (endTime - startTime)/1000000);
     }
 }
