@@ -13,7 +13,7 @@ public class EulerNum {
     }
 
     // n and k MUST be positive, or else algorithm won't work right
-    public static BigDecimal calculateCoefficient( int n, int k ) {
+    private static BigDecimal calculateCoefficient( int n, int k ) {
         BigDecimal result = BigDecimal.valueOf(0);
 
         if (k >= 0 && k <= n) {
@@ -27,7 +27,7 @@ public class EulerNum {
         return result;
     }
 
-    static List<BigDecimal> eulerNums = new ArrayList<>();
+    private static List<BigDecimal> eulerNums = new ArrayList<>();
 
     public static BigDecimal calculate(int n) {
         if (eulerNums.size() == 0) {
@@ -40,10 +40,10 @@ public class EulerNum {
         return eulerNums.get(n);
     } 
 
-    public static BigDecimal calculateEuler(int n) {
+    private static BigDecimal calculateEuler(int n) {
 
         BigDecimal sum = BigDecimal.valueOf(0);
-        
+
         for (int k = 0; k <= n-1; k++) {
             BigDecimal Ek = eulerNums.get(k);
             Ek = Ek.multiply( BigDecimal.valueOf(Math.pow(2, (n-1-k))) );

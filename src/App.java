@@ -1,26 +1,42 @@
+import java.util.Date;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
+/**
+ * Hello world!
+ *
+ */
 public class App 
 {
-    static List<BigDecimal> eulerNums = new ArrayList<>();
-
-    public static BigDecimal calculate(int n) {
-        for (int i = (eulerNums.size() - 1); i <= n; i++) {
-            eulerNums.add(EulerNum.calculateEuler(i));
-        }
-        return eulerNums.get(n);
-    }
-
     public static void main( String[] args )
     {
+        System.out.println( "Hello World!" );
 
-        BigDecimal euler = EulerNum.calculate(300);
-        System.out.println(euler.setScale(2).toPlainString());
-        for (int i = 0; i <= 100; i++) {
-            euler = EulerNum.calculate(i);
-            System.out.println(euler.setScale(2).toPlainString());
-        }
+        long startTime = System.nanoTime();
+        Ex1 govno = new Ex1();
+        BigDecimal bg = govno.getEuler(300);
+        System.out.println( bg);
+        long endTime = System.nanoTime();
+        System.out.println("GOVNO 300"+ (endTime - startTime)/1000000);
+       /* for (int i=100;i<=100;i++) {
+          bg = govno.getEuler(i);
+          System.out.println( bg);
+        }*/
+        startTime = System.nanoTime();
+        bg = EulerNum.calculate(300);
+        System.out.println( bg);
+        endTime = System.nanoTime();
+        System.out.println("NASHE GOVNO 300"+ (endTime - startTime)/1000000);
+
+        startTime = System.nanoTime();
+        bg = govno.getEuler(100);
+        System.out.println( bg);
+        endTime = System.nanoTime();
+        System.out.println("GOVNO 100"+ (endTime - startTime)/1000000);
+
+        startTime = System.nanoTime();
+        bg = EulerNum.calculate(300);
+        System.out.println( bg);
+        endTime = System.nanoTime();
+        System.out.println("NASHE GOVNO 100"+ (endTime - startTime)/1000000);
     }
 }
