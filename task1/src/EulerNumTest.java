@@ -29,22 +29,10 @@ public class EulerNumTest {
   
   @Test
   public void calculate100() {
-    BigDecimal euler = EulerNum.calculate(100);
-    Ex1 ex1 = new Ex1();
-    BigDecimal stock = ex1.getEuler(100);
-    assertEquals(stock.setScale(0), euler.setScale(0));
-  }
-  
-  @Test
-  public void performance150_stock() {
-    Ex1 ex1 = new Ex1();
-    BigDecimal stock = ex1.getEuler(150);
-  }
-  
-  @Test
-  public void performance150_euler() {
     EulerNum.clearCache();
-    BigDecimal euler = EulerNum.calculate(150);
+    BigDecimal euler = EulerNum.calculate(100);
+    BigDecimal stock = new BigDecimal("2903528346661097497054603834764435875077553006646158945080492319146997643370625023889353447129967354174648294748510553528692457632980625125");
+    assertEquals(stock.setScale(0), euler.setScale(0));
   }
   
 }
