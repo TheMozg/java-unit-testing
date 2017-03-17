@@ -5,11 +5,10 @@ import java.math.BigDecimal;
  * Hello world!
  *
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+public class App {
+    public static void main( String[] args ) {
+        Ex1 govno = new Ex1();
+ /*       System.out.println( "Hello World!" );
 
         long startTime = System.nanoTime();
         Ex1 govno = new Ex1();
@@ -17,11 +16,6 @@ public class App
         System.out.println( bg);
         long endTime = System.nanoTime();
         System.out.println("GOVNO 300 "+ (endTime - startTime)/1000000);
-       /* for (int i=100;i<=100;i++) {
-          bg = govno.getEuler(i);
-          System.out.println( bg);
-        }*/
-        startTime = System.nanoTime();
         bg = EulerNum.calculate(300 );
         System.out.println( bg);
         endTime = System.nanoTime();
@@ -38,5 +32,8 @@ public class App
         System.out.println( bg);
         endTime = System.nanoTime();
         System.out.println("NASHE GOVNO 100 "+ (endTime - startTime)/1000000);
+        */
+        System.out.println(govno.sec(1.57, 0.1));
+        System.out.println(Secans.calculate(1.57, 0.1));
     }
 }

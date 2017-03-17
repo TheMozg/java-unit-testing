@@ -4,7 +4,7 @@ import java.util.List;
 
 public class EulerNum {
 
-    private static BigDecimal getFactorial(int n) {
+    public static BigDecimal getFactorial(int n) {
 
         BigDecimal factorial = BigDecimal.valueOf(1);
 
