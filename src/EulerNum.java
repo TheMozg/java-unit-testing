@@ -50,7 +50,8 @@ public class EulerNum {
 
         for (int k = 0; k <= n-1; k++) {
             BigDecimal Ek = eulerNums.get(k);
-            Ek = Ek.multiply( BigDecimal.valueOf(Math.pow(2, (n-1-k))) );
+            BigDecimal power = BigDecimal.valueOf(2);
+            Ek = Ek.multiply( power.pow(n-1-k) );
             Ek = Ek.multiply( calculateCoefficient(n, k) );
             sum = sum.add(Ek);
         }
