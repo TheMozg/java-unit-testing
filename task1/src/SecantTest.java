@@ -20,11 +20,7 @@ public class SecantTest {
         double sec = Secant.sec(-0.09, accuracy);
         assertEquals(1.004, sec, accuracy);
     }
-
-    public void pointPiDiv2() {
-        double sec = Secant.sec(Math.PI/2, accuracy);
-        assertEquals(Double.POSITIVE_INFINITY, sec, accuracy);
-    }
+    
     @Test
     public void pointPiDiv2_r() {
         double sec = Secant.sec(Math.PI/2+0.09, accuracy);
@@ -36,10 +32,6 @@ public class SecantTest {
         assertEquals(11.126, sec, 0.1);
     }
 
-    public void pointMPiDiv2() {
-        double sec = Secant.sec(-Math.PI/2, accuracy);
-        assertEquals(Double.POSITIVE_INFINITY, sec, accuracy);
-    }
     @Test
     public void pointMPiDiv2_r() {
         double sec = Secant.sec(-Math.PI/2+0.09, accuracy);
@@ -67,10 +59,6 @@ public class SecantTest {
         assertEquals(-1.004, sec, accuracy);
     }
 
-    public void point3PiDiv2() {
-        double sec = Secant.sec(3*Math.PI/2, accuracy);
-        assertEquals(Double.POSITIVE_INFINITY, sec, accuracy);
-    }
     @Test
     public void point3PiDiv2_r() {
         double sec = Secant.sec((3*Math.PI/2)+0.09, accuracy);
@@ -82,12 +70,12 @@ public class SecantTest {
         assertEquals(-11.126, sec, 0.1);
     }
 
-    @Test
+    @Test(timeout=20000)
     public void posInfTest() {
         double sec = Secant.sec(Double.POSITIVE_INFINITY, accuracy);
         assertEquals(Double.NaN, sec, accuracy);
     }
-    @Test
+    @Test(timeout=20000)
     public void negInfTest() {
         double sec = Secant.sec(Double.NEGATIVE_INFINITY, accuracy);
         assertEquals(Double.NaN, sec, accuracy);
@@ -97,12 +85,6 @@ public class SecantTest {
     public void class1Point() {
         double sec = Secant.sec(-Math.PI/4, accuracy);
         assertEquals(1.414, sec, accuracy);
-    }
-
-    @Test
-    public void point100() {
-        double sec = Secant.sec(accuracy, 0.000001);
-        assertEquals(1.1547, sec, 0.2);
     }
 
     @Test
