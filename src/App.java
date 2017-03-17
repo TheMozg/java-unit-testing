@@ -34,7 +34,7 @@ public class App
         System.out.println("GOVNO 100 "+ (endTime - startTime)/1000000);
 
         startTime = System.nanoTime();
-        bg = EulerNum.calculate(300 );
+        bg = EulerNum.calculate(100 );
         System.out.println( bg);
         endTime = System.nanoTime();
         System.out.println("NASHE GOVNO 100 "+ (endTime - startTime)/1000000);
