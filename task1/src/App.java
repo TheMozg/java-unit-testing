@@ -34,6 +34,6 @@ public class App {
         System.out.println("NASHE GOVNO 100 "+ (endTime - startTime)/1000000);
         */
         System.out.println(govno.sec(1.57, 0.1));
-        System.out.println(Secans.calculate(1.57, 0.1));
+        System.out.println(Secant.sec(1.57, 0.1));
     }
 }
