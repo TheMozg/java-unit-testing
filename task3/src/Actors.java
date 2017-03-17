@@ -4,7 +4,7 @@ import java.util.List;
 public class Actors {
 
     enum Actions {
-        RUN("run"), SCREAM("scream"), NOTHING("do nothing");
+        RUN("run");
 
         private final String text;
 
@@ -61,10 +61,16 @@ public class Actors {
                 reasonsToRun.add(reason);
             }
             if(reasonsToRun.size() >= 3) setUnderstood(true);
+            else setUnderstood(false);
         } 
+
+        public void calmDown() {
+            reasonsToRun.clear();
+        }
         
         private String doInCaseOfPanic(Actions action) {
             String panic = "it's time to " + action.text;
+            calmDown();
             return panic;
         }
 
@@ -93,57 +99,60 @@ public class Actors {
 
     public class ScaryFish extends Reason {
 
-        private String description = "scary fish";
-        
+        private String name = "Scary fish";
+        private String description;
+
         public void diveFrom(Situations situation) {
             setValid(true);
-            description +=  " dived out of the " + situation.text;
-        }
+            description = name + " dived out of the " + situation.text;
+        } 
 
         @Override
         public String toString() {
             String result = description;
-            if(!getValid()) result += " was harmless";
+            if(!getValid()) result = name + " was harmless";
 
             return result;
         }
     }
 
     public class JumpingDoughnuts extends Reason {
-        private String description = "jumping doughnuts";
+        private String name = "Jumping doughnuts";
+        private String description;
         private Boolean areHot = false;
         
-        public void setHot(Boolean st) {
+        public void setHot() {
+            if(!(this.areHot)) description = "hot " + description;
             this.areHot = true;
-            description = "hot " + description;
         }
 
         public void jumpStraightOutOf(Situations situation) {
             setValid(true);
-            description += " jumped straight out of " + situation.text;
+            description = name + " jumped straight out of " + situation.text;
         }
 
         @Override
         public String toString() {
             String result = description;
-            if(!getValid()) result += " weren't really that jumpy actually";
+            if(!getValid()) result = name + " weren't really that jumpy actually";
 
             return result;
         }
     }
 
     public class Pipes extends Reason {
-        private String description = "pipes";
+        private String name = "Pipes";
+        private String description;
 
         public void squealThrough(Situations situation) {
             setValid(true);
-            description += " squealed through the " + situation.text;
+            description = name + " squealed through the " + situation.text;
         }
 
         @Override
         public String toString() {
             String result = description;
-            if(!getValid()) result += " were calm and quiet";
+            if(!getValid()) result = name + " were calm and quiet";
 
             return result;
         }
