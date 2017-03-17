@@ -7,7 +7,7 @@ import java.math.BigDecimal;
  */
 public class App {
     public static void main( String[] args ) {
-        Ex1 govno = new Ex1();
+        //Ex1 govno = new Ex1();
  /*       System.out.println( "Hello World!" );
 
         long startTime = System.nanoTime();
@@ -33,7 +33,7 @@ public class App {
         endTime = System.nanoTime();
         System.out.println("NASHE GOVNO 100 "+ (endTime - startTime)/1000000);
         */
-        System.out.println(govno.sec(1.57, 0.1));
+        //System.out.println(govno.sec(1.57, 0.1));
         System.out.println(Secant.sec(1.57, 0.1));
     }
 }
