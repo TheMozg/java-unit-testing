@@ -17,6 +17,10 @@ class HashNode<K, V>
         this.key = key;
         this.value = value;
     }
+    
+    public String toString() {
+        return "("+key + ":" + value + "->" + next + ")";
+    }
 }
  
 // Class to represent entire hash table
@@ -30,6 +34,13 @@ class Map<K, V>
  
     // Current size of array list
     private int size;
+ 
+    public boolean debug;
+    private void logMe(String str){
+      if(debug){
+        System.out.println(str);
+      }
+    }
  
     // Constructor (Initializes capacity, size and
     // empty chains.
@@ -119,6 +130,9 @@ class Map<K, V>
         // Find head of chain for given key
         int bucketIndex = getBucketIndex(key);
         HashNode<K, V> head = bucketArray.get(bucketIndex);
+        logMe("Adding key value pair: " + key + ":" + value);
+        logMe("Hash: " + key.hashCode() + ", bucket: " + bucketIndex);
+        logMe("Bucket Array before: " + bucketArray);
  
         // Check if key is already present
         while (head != null)
@@ -126,18 +140,20 @@ class Map<K, V>
             if (head.key.equals(key))
             {
                 head.value = value;
+                logMe("Key " + key + " found!");
                 return;
             }
             head = head.next;
         }
- 
+        logMe("Key " + key + " not found!");
         // Insert key in chain
         size++;
         head = bucketArray.get(bucketIndex);
         HashNode<K, V> newNode = new HashNode<K, V>(key, value);
         newNode.next = head;
         bucketArray.set(bucketIndex, newNode);
- 
+        logMe("Bucket Array after: " + bucketArray);
+
         // If load factor goes beyond threshold, then
         // double hash table size
         if ((1.0*size)/numBuckets >= 0.7)
