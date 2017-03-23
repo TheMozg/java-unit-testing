@@ -44,14 +44,28 @@ public class MapTest {
     @Test
     public void whiteBoxAdd() {
         System.out.println("Whiteboxing hash map add");
+        ArrayList<String> expected = new ArrayList<>();
+        expected.add("Adding key value pair: this:1");
+        expected.add("Hash: 3559070, bucket: 0");
+        expected.add("Bucket Array before: [null, null, null, null, null, null, null, null, null, null]");
+        expected.add("Key this not found!");
+        expected.add("Bucket Array after: [(this:1->null), null, null, null, null, null, null, null, null, null]");
+        expected.add("Adding key value pair: coder:2");
+        expected.add("Hash: 94834725, bucket: 5");
+        expected.add("Bucket Array before: [(this:1->null), null, null, null, null, null, null, null, null, null]");
+        expected.add("Key coder not found!");
+        expected.add("Bucket Array after: [(this:1->null), null, null, null, null, (coder:2->null), null, null, null, null]");
+        expected.add("Adding key value pair: this:4");
+        expected.add("Hash: 3559070, bucket: 0");
+        expected.add("Bucket Array before: [(this:1->null), null, null, null, null, (coder:2->null), null, null, null, null]");
+        expected.add("Key this found!");
         map = new Map<>();
         map.debug=true;
+        map.resetLogList();
         map.add("this",1 );
         map.add("coder",2 );
         map.add("this",4 );
-        map.add("hi",5 );
-        int val = map.get("this");
-        assertEquals(4, val);
+        assertArrayEquals(expected.toArray(), map.logList.toArray());
     }
   
 }

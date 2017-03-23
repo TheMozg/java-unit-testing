@@ -36,8 +36,14 @@ class Map<K, V>
     private int size;
  
     public boolean debug;
+    public ArrayList<String> logList;
+    public void resetLogList(){
+      logList = new ArrayList<>();
+    }
     private void logMe(String str){
       if(debug){
+        if(logList != null)
+          logList.add(str);
         System.out.println(str);
       }
     }
