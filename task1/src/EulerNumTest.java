@@ -1,9 +1,6 @@
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertArrayEquals;
 import org.junit.Test;
 import java.math.BigDecimal;
-import java.util.List;
-import java.util.ArrayList;
 
 public class EulerNumTest {
   @Test

@@ -49,7 +49,7 @@ public class ActorsTest {
     }
 
     @Test
-    public void checkCalmnessHitchr41 () {
+    public void checkCalmnessHitch4 () {
         scaryFish.diveFrom(Actors.Situations.SKY);
         pipes.squealThrough(Actors.Situations.WINDS);
         donuts.jumpStraightOutOf(Actors.Situations.ROAD);

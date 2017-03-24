@@ -52,19 +52,21 @@ public class Actors {
             return this.understoodWhatToDo;
         }
 
-        public void setUnderstood(Boolean st) {
+        private void setUnderstood(Boolean st) {
             this.understoodWhatToDo = st;
         }
 
         public void addReasonToRun(Reason reason) {
-            if(reason.isValid == true) {
+            if(reason.getValid() == true) {
                 reasonsToRun.add(reason);
             }
-            if(reasonsToRun.size() >= 3) setUnderstood(true);
+            if(reasonsToRun.size() >= 3) { 
+              setUnderstood(true);
+            }
             else setUnderstood(false);
         } 
 
-        public void calmDown() {
+        private void calmDown() {
             reasonsToRun.clear();
         }
         
@@ -78,34 +80,49 @@ public class Actors {
         public String toString() {
             String result = name;
             if(getUnderstood()) result += " understood that " + doInCaseOfPanic(Actions.RUN);
-            else result += " was calm";
+            else {
+              result += " was calm";
+              calmDown();
+            }
 
             return result;
         }
 
     }
 
-    public class Reason {
-        private Boolean isValid = false;
+    private interface Reason {
+        public Boolean isValid = false;
+        public String name = "";
+        public String description = "";
+        public Boolean getValid();
+        public void setHarmless();
 
-        public void setValid(Boolean st) {
+        @Override
+        public String toString();
+
+    }
+
+    public class ScaryFish implements Reason {
+        private String name = "Scary fish";
+        private Boolean isValid = false;
+        private String description;
+
+        private void setValid(Boolean st) {
             this.isValid = st;
         }
 
         public Boolean getValid() {
             return this.isValid;
         }
-    }
-
-    public class ScaryFish extends Reason {
-
-        private String name = "Scary fish";
-        private String description;
 
         public void diveFrom(Situations situation) {
             setValid(true);
             description = name + " dived out of the " + situation.text;
         } 
+
+        public void setHarmless() {
+            setValid(false);
+        }
 
         @Override
         public String toString() {
@@ -116,14 +133,27 @@ public class Actors {
         }
     }
 
-    public class JumpingDoughnuts extends Reason {
+    public class JumpingDoughnuts implements Reason {
         private String name = "Jumping doughnuts";
+        private Boolean isValid = false;
         private String description;
         private Boolean areHot = false;
         
+        private void setValid(Boolean st) {
+            this.isValid = st;
+        }
+
+        public Boolean getValid() {
+            return this.isValid;
+        }
+
         public void setHot() {
-            if(!(this.areHot)) description = "hot " + description;
+            //if(!(this.areHot)) description = "hot " + description;
             this.areHot = true;
+        }
+
+        public void setHarmless() {
+            setValid(false);
         }
 
         public void jumpStraightOutOf(Situations situation) {
@@ -133,16 +163,31 @@ public class Actors {
 
         @Override
         public String toString() {
-            String result = description;
-            if(!getValid()) result = name + " weren't really that jumpy actually";
+          String result = "";
+          if (this.areHot) result = "Hot ";
+          if(!getValid()) result += name + " weren't really that jumpy actually";
+          else result += description;
 
-            return result;
+          return result;
         }
     }
 
-    public class Pipes extends Reason {
+    public class Pipes implements Reason {
         private String name = "Pipes";
         private String description;
+        private Boolean isValid = false;
+
+        private void setValid(Boolean st) {
+            this.isValid = st;
+        }
+
+        public Boolean getValid() {
+            return this.isValid;
+        }
+
+        public void setHarmless() {
+            setValid(false);
+        }
 
         public void squealThrough(Situations situation) {
             setValid(true);
