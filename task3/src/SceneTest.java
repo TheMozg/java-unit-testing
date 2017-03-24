@@ -16,6 +16,37 @@ public class SceneTest {
   final String hitch_0 = "Ford was calm";
 
   @Test
+  public void checkInitFish () {
+    Actors actors = new Actors();
+    Actors.ScaryFish fish = actors.new ScaryFish(); 
+    assertFalse(fish.getValid());
+  }
+
+  @Test
+  public void checkInitDonut () {
+    Actors actors = new Actors();
+    Actors.JumpingDoughnuts donut = actors.new JumpingDoughnuts(); 
+    assertFalse(donut.getValid());
+  }
+
+
+  @Test
+  public void checkInitPipes () {
+    Actors actors = new Actors();
+    Actors.Pipes pipes = actors.new Pipes(); 
+    assertFalse(pipes.getValid());
+  }
+
+
+  @Test
+  public void checkInitHitch () {
+    Actors actors = new Actors();
+    Actors.Hitchhiker hitch = actors.new Hitchhiker("TEST"); 
+    assertFalse(hitch.getUnderstood());
+  }
+
+
+  @Test
   public void check1 () {
     String args[] = { "0", "0", "0", "0", "0", "0", "0" };
     Scene scene = new Scene(args);
