@@ -222,5 +222,24 @@ public class SceneTest {
     assertEquals(expected_result, result);   
   }
 
+  @Test
+  public void checkErrorNumberOfArgs () {
+    String args[] = { "0", "0", "1", "0", "0", "0" };
+    Scene scene = new Scene(args);
+  
+    String result = scene.result;
+    String expected_result = "Error";
+    assertEquals(expected_result, result);   
+  }
+
+  @Test
+  public void checkErrorTypeOfArgs () {
+    String args[] = { "0", "0", "Explicitlywrong", "0", "0", "0" };
+    Scene scene = new Scene(args);
+  
+    String result = scene.result;
+    String expected_result = "Error";
+    assertEquals(expected_result, result);   
+  } 
 
 }
