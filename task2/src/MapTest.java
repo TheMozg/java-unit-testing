@@ -11,8 +11,8 @@ public class MapTest {
     @Test
     public void addGet() {
         map = new Map<>();
-        map.add("one",1 );
-        int val = map.get("one");
+        map.add("themozg", 1);
+        int val = map.get("themozg");
         assertEquals(1, val);
     }
     

@@ -70,6 +70,7 @@ class Map<K, V>
     {
         int hashCode = key.hashCode();
         int index = hashCode % numBuckets;
+        if (index < 0) index = 0;
         return index;
     }
  
