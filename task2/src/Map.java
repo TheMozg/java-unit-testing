@@ -147,6 +147,7 @@ class Map<K, V>
             {
                 head.value = value;
                 logMe("Key " + key + " found!");
+                logMe("Bucket Array after: " + bucketArray);
                 return;
             }
             head = head.next;

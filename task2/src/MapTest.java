@@ -59,6 +59,7 @@ public class MapTest {
         expected.add("Hash: 3559070, bucket: 0");
         expected.add("Bucket Array before: [(coder:2->(this:1->null)), null, null, null, null]");
         expected.add("Key this found!");
+        expected.add("Bucket Array after: [(coder:2->(this:4->null)), null, null, null, null]");
         expected.add("---Adding key value pair: a:3");
         expected.add("Hash: 97, bucket: 2");
         expected.add("Bucket Array before: [(coder:2->(this:4->null)), null, null, null, null]");
