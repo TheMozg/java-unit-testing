@@ -53,7 +53,7 @@ class Map<K, V>
     public Map()
     {
         bucketArray = new ArrayList<>();
-        numBuckets = 10;
+        numBuckets = 5;
         size = 0;
  
         // Create empty chains
@@ -136,7 +136,7 @@ class Map<K, V>
         // Find head of chain for given key
         int bucketIndex = getBucketIndex(key);
         HashNode<K, V> head = bucketArray.get(bucketIndex);
-        logMe("Adding key value pair: " + key + ":" + value);
+        logMe("---Adding key value pair: " + key + ":" + value);
         logMe("Hash: " + key.hashCode() + ", bucket: " + bucketIndex);
         logMe("Bucket Array before: " + bucketArray);
  
@@ -164,6 +164,8 @@ class Map<K, V>
         // double hash table size
         if ((1.0*size)/numBuckets >= 0.7)
         {
+            logMe("Resizing HashTable");
+            debug = false;
             ArrayList<HashNode<K, V>> temp = bucketArray;
             bucketArray = new ArrayList<>();
             numBuckets = 2 * numBuckets;
@@ -179,6 +181,8 @@ class Map<K, V>
                     headNode = headNode.next;
                 }
             }
+            debug = true;
+            logMe("Bucket Array after resize: " + bucketArray);
         }
     }
 }
